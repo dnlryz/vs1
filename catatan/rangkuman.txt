@@ -1,0 +1,32 @@
+
+variabel : variabel adalah suatu rumus otomatis dalam coding yang diperlukan untuk menjalankan suatu perintah dalam komputer.
+perintah pada suatu rumus juga dapat di gunakan untuk mendeskripsikan suatu isi.
+var adalah kata kunci untuk memulai suatu rumus/variabel
+suatu nama variabel hanya di perkenankan menggunakan awalan huruf, underscore dan dollar
+huruf awal kapital dapat mempengaruhi keselarasan suatu rumus
+nama variabel tidak di perkenankan menggunakan kata var setelah rumus var
+isi dalam rumus harus di tutup dengan inisialisasi berupa tanda kutip 2 ataupun 1
+isi dalam rumus mempunyai nama string
+string mempunyai isi data yang berupa suatu nama atau pun angka
+
+number : berupa angka yang di gunakan tanpa menggunakan kutip 1 atau 2
+number dibagi menjadi 2 jenis : integers atau float
+float : berupa angka desimal
+integers : adalah angka bulat
+
+boolean : adalah keyword untuk mengetahui data apa yang true atau false
+false adalah pembacaan data yang salah dengan contoh "" bukan " " karena jika yang di perintah adalah blank string maka jawaban yang true adalah kutip yang ke 2
+
+ParseInt : suatu function yang di perlukan untuk mengubah suatu string menjadi number
+function : adalah suatu object untuk menjalankan suatu rumus atau bisa disebut sebagai keyword untuk menjalankan suatu isi dalam rumus
+
+
+
+if statement : adalah suatu rumus dalam bahasa pemprograman untuk mendasari suatu looping
+if statement membutuhkan boolean
+if else : adalah suatu sistem berupa opsi lain setelah rumus if
+
+array adalah suatu object yang digunakan untuk menandakan suatu data
+array bisa di sebut juga suatu indeks seperti number dan string
+setiap array wajib menggunakan kurung siku di awal dan di akhir
+array dapat menandakan banyaknya suatu data seperti string
