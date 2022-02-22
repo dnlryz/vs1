@@ -1,0 +1,30 @@
+<script>
+    let namaBuah1 = "Apel"
+    let namaBuah2 = 'anggur'
+    let namaBuah3 = 'jeruk'
+
+    let hargaBuah1 = 10000
+    let hargaBuah2 = 15000
+    let hargaBuah3 = 20000
+
+    alert('Selamat Datang')
+    alert(`Daftar Buah :
+    ${namaBuah1}  : Rp. ${hargaBuah1}
+    ${namaBuah2}  : Rp. ${hargaBuah2}
+    ${namaBuah3}  : Rp. ${hargaBuah3}`)
+    
+
+    let qty1 = parseInt(prompt(`mau beli ${namaBuah1} berapa ?`))
+    let qty2 = prompt(`mau beli ${namaBuah2} berapa ?` )
+    qty2 = parseInt(qty2)
+    let qty3 = prompt(`mau beli ${namaBuah3} berapa?`)
+    qty3 = parseInt(qty3)
+
+    let total = (qty1*hargaBuah1)+ (qty2*hargaBuah2)+ (qty3*hargaBuah3)
+
+    alert(`daftar belanja : 
+    1. ${namaBuah1} : ${qty1} X Rp. ${hargaBuah1} = Rp.${qty1*hargaBuah1}
+    2. ${namaBuah2} : ${qty2} X Rp. ${hargaBuah2} = Rp.${qty2*hargaBuah2}
+    3. ${namaBuah3} : ${qty3} X Rp. ${hargaBuah3} = Rp.${qty1*hargaBuah3}
+    total : Rp.${total}`)
+</script>

@@ -1,0 +1,213 @@
+  <script>
+    let buahs = [
+      { name: "Apel", harga: 10e3, stock: 10 },
+      { name: "Anggur", harga: 15e3, stock: 10 },
+      { name: "Jeruk", harga: 20e3, stock: 10 },
+    ];
+
+    let categories = ["cepat saji", "pakaian", "elektronik", "buah"];
+
+    class Products {
+      constructor(name, price, stock, categoryId) {
+        this.name = name;
+        this.price = price;
+        this.stock = stock;
+        this.categoryId = categoryId;
+      }
+    }
+
+    class CepatSaji extends Products {
+      constructor(name, price, stock, categoryId, expired) {
+        super(name, price, stock, categoryId);
+        this.expired = expired;
+      }
+    }
+
+    class Pakaian extends Products {
+      constructor(name, price, stock, categoryId, size) {
+        super(name, price, stock, categoryId);
+        this.size = size;
+      }
+    }
+
+    class Elektronik extends Products {
+      constructor(name, price, stock, categoryId, warranty) {
+        super(name, price, stock, categoryId);
+        this.warranty = warranty;
+      }
+    }
+
+    class Buah extends Products {
+      constructor(name, price, stock, categoryId, sugarLvl) {
+        super(name, price, stock, categoryId);
+        this.sugarLvl = sugarLvl;
+      }
+    }
+
+    let products = [
+      new CepatSaji("Noodle", 20000, 10, 0, 2024),
+      new Elektronik("Walkman", 200000, 15, 2, true),
+      new Pakaian("Kemeja", 100000, 20, 1, "L"),
+      new Buah("Nanas", 30000, 10, 3, "High"),
+    ];
+    let carts = [];
+
+    const renderProducts = () => {
+      let output = "";
+      products.forEach((val, i) => {
+        if (val.categoryId === 0) {
+          output += `${i + 1}. ${val.name} : Rp. ${val.price},expired ${
+            val.expired
+          } ,stock ${val.stock} pcs\n`;
+        } else if (val.categoryId === 1) {
+          output += `${i + 1}. ${val.name} : Rp. ${val.price},size ${
+            val.size
+          } ,stock ${val.stock} pcs\n`;
+        } else if (val.categoryId === 2) {
+          output += `${i + 1}. ${val.name} : Rp. ${val.price}, warranty ${
+            val.warranty
+          } ,stock ${val.stock} pcs\n`;
+        } else if (val.categoryId === 3) {
+          output += `${i + 1}. ${val.name} : Rp. ${val.price},sugarLvl ${
+            val.sugarLvl
+          } ,stock ${val.stock} pcs\n`;
+        }
+      });
+      return output;
+    };
+    const renderCarts = () => {
+      let output = "";
+      carts.forEach((val, i) => {
+        output += `${i + 1}. ${val.name} : Rp. ${val.harga}, qty ${
+          val.qty
+        } pcs\n`;
+      });
+      return output;
+    };
+
+    const renderBelanja = () => {
+      let output = "";
+      carts.forEach((val, i) => {
+        output += `${i + 1}. ${val.name} : ${val.qty} X Rp. ${val.harga} = Rp.${
+          val.qty * val.harga
+        }\n`;
+      });
+      return output;
+    };
+
+    const totalOpt = () => {
+      let total = 0;
+      carts.forEach((val) => {
+        total += val.harga * val.qty;
+      });
+      return total;
+    };
+    alert("Selamat Datang");
+    let confirmUtama;
+    do {
+      let menuUtama = prompt(
+        `Menu utama\n` +
+          `1. List Product\n` +
+          `2. Tambah Product\n` +
+          `3. Hapus Product\n` +
+          "4. Beli Product\n" +
+          "5. Exit"
+      );
+
+      if (menuUtama == 1) {
+        let output = "List Product:\n" + renderProducts();
+        alert(output);
+      } else if (menuUtama == 2) {
+
+        let output0 = 'Pilih kategori:\n'
+        categories.forEach((val,index)=>{
+          output0+=`${index+1}. ${val}\n`
+        })
+        let categoryChoice = prompt(output0)
+
+        let namaProduct = prompt("nama Product ?");
+        let hargaProduct = parseInt(prompt("harganya berapa?"));
+        let stockProduct = parseInt(prompt("stocknya berapa ?"));
+        let tambahan 
+
+        if(categoryChoice == 1){
+          tambahan = parseInt(prompt('expired kapan'))
+          products.push(new CepatSaji(namaProduct,hargaProduct,stockProduct,categoryChoice-1,tambahan))
+        }else if(categoryChoice == 2){
+          tambahan = prompt('size berapa')
+          products.push(new Pakaian(namaProduct,hargaProduct,stockProduct,categoryChoice-1,tambahan))
+        }else if(categoryChoice == 3){
+          tambahan = confirm('garansi nggak ? ')
+          products.push(new Pakaian(namaProduct,hargaProduct,stockProduct,categoryChoice-1,tambahan))
+        }else{
+          tambahan = prompt('sugar lvl berapa')
+          products.push(new Pakaian(namaProduct,hargaProduct,stockProduct,categoryChoice-1,tambahan))
+        }
+        let output = "List Product:\n" + renderProducts();
+        alert(output);
+      } else if (menuUtama == 3) {
+
+        let output = "List Products:\n" + renderProducts();
+        output += "yang mana yang mau dihapus ?";
+        let nomerHapus = prompt(output);
+        let confirmHapus = confirm(
+          `yakin mau hapus ${products[nomerHapus - 1].name}?`
+        );
+        if (confirmHapus) {
+          products.splice(nomerHapus - 1, 1);
+        }
+
+        let output1 = "List Products:\n" + renderProducts();
+        alert(output1);
+      } else if (menuUtama == 4) {
+        let beliLagi;
+        do {
+          let output = "List product:\n" + renderProducts();
+          output += "product yang mana yang mau dibeli ?";
+
+          let nomerBeli = prompt(output);
+          let qtybeli = prompt(
+            `pengen beli product ${products[nomerBeli - 1].name} berapa ?`
+          );
+
+          carts.push({
+            name: buahs[nomerBeli - 1].name,
+            harga: buahs[nomerBeli - 1].harga,
+            qty: qtybeli,
+          });
+          alert("berhasil tambah barang ke cart");
+
+          let output1 = "List cart:\n" + renderCarts();
+          alert(output1);
+
+          beliLagi = confirm("mau beli lagi ?");
+        } while (beliLagi);
+
+        let total = totalOpt();
+
+        while (true) {
+          let output = "daftar belanja :\n" + renderBelanja();
+          output += `total: Rp.${total}\nmenunggu pembayaran ?`;
+          let bayar = prompt(output);
+
+          bayar = parseInt(bayar);
+
+          if (bayar === total) {
+            alert("uangnya pas bos ");
+            break;
+          } else if (bayar > total) {
+            alert("kembaliannya " + (bayar - total));
+            break;
+          } else {
+            alert(`duitnya kurang bos , Rp.${total - bayar},00  lagi dong `);
+          }
+        }
+      } else if (menuUtama == 5) {
+        confirmUtama = confirm("yakin keluar menu utama ?");
+      } else {
+        alert("input yang benar lah ");
+      }
+    } while (!confirmUtama);
+    alert("terima kasih");
+  </script>
+</html>
